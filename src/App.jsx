@@ -2,11 +2,13 @@ import { useState } from 'react'
 import BinaryConverter from './tools/BinaryConverter'
 import HexConverter from './tools/HexConverter'
 import OhmsLaw from './tools/OhmsLaw'
+import UnitConverter from './tools/UnitConverter'
 
 const tools = [
   { id: 'binary', label: 'Binary', component: BinaryConverter },
   { id: 'hex', label: 'Hex', component: HexConverter },
   { id: 'ohm', label: "Ohm's Law", component: OhmsLaw },
+  { id: 'unit', label: 'Units', component: UnitConverter },
 ]
 
 export default function App() {
