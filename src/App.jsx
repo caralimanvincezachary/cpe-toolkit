@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import BinaryConverter from './tools/BinaryConverter'
 import HexConverter from './tools/HexConverter'
+import OhmsLaw from './tools/OhmsLaw'
 
 const tools = [
   { id: 'binary', label: 'Binary', component: BinaryConverter },
   { id: 'hex', label: 'Hex', component: HexConverter },
+  { id: 'ohm', label: "Ohm's Law", component: OhmsLaw },
 ]
 
 export default function App() {
@@ -14,7 +16,7 @@ export default function App() {
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-xl mx-auto">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">CpE Toolkit</h1>
-        <div className="flex gap-2 mb-6">
+        <div className="flex gap-2 mb-6 flex-wrap">
           {tools.map(t => (
             <button key={t.id} onClick={() => setActive(t.id)}
               className={active === t.id
