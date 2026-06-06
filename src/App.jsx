@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BinaryConverter from './tools/BinaryConverter'
 import HexConverter from './tools/HexConverter'
 import OhmsLaw from './tools/OhmsLaw'
@@ -23,17 +23,35 @@ const tools = [
 
 export default function App() {
   const [active, setActive] = useState('binary')
+  const [dark, setDark] = useState(() => localStorage.getItem('theme') === 'dark')
   const Tool = tools.find(t => t.id === active).component
+
+  useEffect(() => {
+    if (dark) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [dark])
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-6 transition-colors duration-200">
       <div className="max-w-xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">CpE Toolkit</h1>
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">CpE Toolkit</h1>
+          <button onClick={() => setDark(d => !d)}
+            className="px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+            {dark ? '☀️ Light' : '🌙 Dark'}
+          </button>
+        </div>
         <div className="flex gap-2 mb-6 flex-wrap">
           {tools.map(t => (
             <button key={t.id} onClick={() => setActive(t.id)}
               className={active === t.id
                 ? 'px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium'
-                : 'px-4 py-2 rounded-lg border border-gray-200 text-sm text-gray-600 hover:bg-gray-50'}>
+                : 'px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors'}>
               {t.label}
             </button>
           ))}

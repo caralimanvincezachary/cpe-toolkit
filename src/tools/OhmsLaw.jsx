@@ -32,26 +32,26 @@ export default function OhmsLaw() {
   ]
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-6">
-      <h2 className="text-lg font-medium text-gray-900 mb-1">Ohm's law calculator</h2>
-      <p className="text-sm text-gray-500 mb-4">Enter any two values — the rest are calculated</p>
+    <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-6">
+      <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-1">Ohm's law calculator</h2>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Enter any two values — the rest are calculated</p>
       <div className="grid grid-cols-2 gap-3 mb-4">
         {fields.map(f => (
           <div key={f.label}>
-            <label className="text-sm text-gray-500">{f.label} ({f.unit})</label>
+            <label className="text-sm text-gray-500 dark:text-gray-400">{f.label} ({f.unit})</label>
             <input type="number" value={f.val}
               onChange={e => f.set(e.target.value)}
               placeholder="e.g. 12"
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm mt-1 focus:outline-none focus:border-blue-400" />
+              className="w-full border border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-lg px-3 py-2 text-sm mt-1 focus:outline-none focus:border-blue-400" />
           </div>
         ))}
       </div>
       {valid && (
-        <div className="space-y-2 border-t border-gray-100 pt-4">
+        <div className="space-y-2 border-t border-gray-100 dark:border-gray-700 pt-4">
           {fields.map(f => (
             <div key={f.label} className="flex justify-between items-center py-1">
-              <span className="text-sm text-gray-500">{f.label}</span>
-              <span className="font-mono text-sm font-medium text-gray-900">{fmt(f.result)} {f.unit}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{f.label}</span>
+              <span className="font-mono text-sm font-medium text-gray-900 dark:text-white">{fmt(f.result)} {f.unit}</span>
             </div>
           ))}
         </div>
