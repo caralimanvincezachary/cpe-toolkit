@@ -6,6 +6,8 @@ import UnitConverter from './tools/UnitConverter'
 import TruthTable from './tools/TruthTable'
 import LogicGate from './tools/LogicGate'
 import NumberQuiz from './tools/NumberQuiz'
+import CPUVisualizer from './tools/CPUVisualizer'
+import CircuitNotes from './tools/CircuitNotes'
 
 const tools = [
   { id: 'binary', label: 'Binary', component: BinaryConverter },
@@ -15,6 +17,8 @@ const tools = [
   { id: 'truth', label: 'Truth Table', component: TruthTable },
   { id: 'logic', label: 'Logic Gates', component: LogicGate },
   { id: 'quiz', label: 'Quiz', component: NumberQuiz },
+  { id: 'cpu', label: 'CPU', component: CPUVisualizer },
+  { id: 'notes', label: 'Notes', component: CircuitNotes },
 ]
 
 export default function App() {
